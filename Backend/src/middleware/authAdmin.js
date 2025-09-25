@@ -17,9 +17,10 @@ async function authAdmin(req,res,next){
       }
     
       try {
+        //Verifying the token and authorizing the user
         const decoded = jwt.verify(token, process.env.JWT_KEY);
     
-
+        //Authorize the user if he is an admin or not
         const user = await prisma.user.findUnique({
           where: { id: decoded.id },
           select: { role: true },
