@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    container_name: productivity-backend
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mydb
+      JWT_KEY: my_secret_key
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: productivity-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:13-alpine
+    container_name: productivity-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

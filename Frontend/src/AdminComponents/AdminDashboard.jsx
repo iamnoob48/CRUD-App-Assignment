@@ -18,6 +18,9 @@ function AdminDashboard() {
       headers: { Authorization: token },
     });
     const data = await res.json();
+    if (!res.ok) {
+      return;
+    }
     setUsers(data);
   };
 

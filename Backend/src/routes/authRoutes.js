@@ -20,7 +20,7 @@ router.post('/register',registerValidation, async (req,res)=>{
      const errors = validationResult(req);
 
      //If there are any errors then we can send errors to the frontend or we can debug ourselves
-     if(!errors.isEmpty()){ return res.status(404).json({errors : errors.array()})}
+     if(!errors.isEmpty()){ return res.status(404).json({errors : errors.array().map(err.msg)})}
 
 
 
@@ -39,7 +39,7 @@ router.post('/register',registerValidation, async (req,res)=>{
             }
         })
     //Generate jwt token
-    const token = jwt.sign({id : user.id, role: user.role}, process.env.JWT_KEY, {expiresIn: "24h"});
+    const token = jwt.sign({id : user.id}, process.env.JWT_KEY, {expiresIn: "24h"});
     res.json({token})
 
     }catch(err){
@@ -64,7 +64,7 @@ router.post('/login', async (req,res)=>{
     //check with the hashed pass
     const checkPass = bcrypt.compareSync(password,user.password);
     if(!checkPass){return res.status(401).json({message: "Password is incorrect"})}
-    const token = jwt.sign({id : user.id, role:user.role}, process.env.JWT_KEY, {expiresIn : '24h'});
+    const token = jwt.sign({id : user.id}, process.env.JWT_KEY, {expiresIn : '24h'});
     res.json({token})
 })
 
