@@ -1,6 +1,12 @@
 # Productivity App with Role-Based Authentication
 
-A full-stack productivity app with **Node.js, Express, Prisma, React, and TailwindCSS**, featuring **user authentication, role-based access, task management**, and an **admin dashboard**.
+A full-stack productivity app with **Node.js, Express, PostgreSQL Prisma, React, and TailwindCSS**, featuring **user authentication, role-based access, task management**, and an **admin dashboard**.
+
+---
+## Demo Video
+- **Youtube Video** : Click this 👇🏻
+
+[![Watch the video](https://img.youtube.com/vi/a-8Jg2bS2p4/0.jpg)](https://youtu.be/a-8Jg2bS2p4)
 
 ---
 
@@ -28,7 +34,7 @@ A full-stack productivity app with **Node.js, Express, Prisma, React, and Tailwi
 
 1. Clone the repo:  
 ```bash
-git clone https://github.com/iamnoob48/productivity-app.git
+git clone https://github.com/iamnoob48/CRUD-App-Assignmet.git
 cd CRUD-App-Assignment
 ```
 2. Install all the dependencies
