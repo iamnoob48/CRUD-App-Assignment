@@ -9,6 +9,7 @@ function auth(req,res,next){
     }else{
         token = headerToken;
     }
+    //Verify the token and fire of next()
     jwt.verify(token , process.env.JWT_KEY, (err,decoded)=>{
         if(err) {return res.status(404).json({message:`Token did not match ${token}`})}
         req.userId = decoded.id;
